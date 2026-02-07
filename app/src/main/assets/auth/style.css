@@ -236,6 +236,12 @@ body {
     gap: 16px;
 }
 
+/* Opcional: Garante que os itens dentro do form-options possam encolher */
+.form-options > * {
+  flex-shrink: 1;
+  min-width: 0; /* Permite que o item encolha além do tamanho do conteúdo se necessário */
+}
+
 .remember-wrapper {
     display: flex;
     align-items: center;
@@ -296,7 +302,7 @@ body {
 .forgot-link {
     color: #6c7293;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     transition: color 0.3s ease;
 }

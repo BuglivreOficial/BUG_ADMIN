@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neumorphism Login Form</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -73,7 +73,7 @@
                             Lembre de min
                         </label>
                     </div>
-                    <a href="#" class="forgot-link">Esqueceu sua senha?</a>
+                    <a class="forgot-link" onClick="AndroidBridge.resetPassword()">Esqueceu sua senha?</a>
                 </div>
 
                 <button type="submit" class="neu-button login-btn">
@@ -112,7 +112,7 @@
             </div>
 
             <div class="signup-link">
-                <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a onclick="AndroidBridge.abrirActivity()">Cadastre-se</a></p>
             </div>
 
             <div class="success-message" id="successMessage">

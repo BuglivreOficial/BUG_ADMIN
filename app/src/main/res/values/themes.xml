@@ -1,6 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-  <style name="Base.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-  </style>
 
-  <style name="AppTheme" parent="Base.AppTheme" />
+    <style
+            name="Base.AppTheme"
+            parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Cor de fundo da barra -->
+        <item name="android:statusBarColor">#FFE8EBF1</item>
+        <!-- Força os ícones a ficarem escuros (cinza/preto) -->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+
+    <style
+            name="AppTheme"
+            parent="Base.AppTheme" />
 </resources>

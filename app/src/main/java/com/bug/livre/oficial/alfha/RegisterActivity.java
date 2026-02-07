@@ -14,12 +14,13 @@ import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewAssetLoader.AssetsPathHandler;
 import androidx.webkit.WebViewClientCompat;
 
-public class LoginActivity extends AppCompatActivity {
+
+public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_register);
+        
         WebView webView = findViewById(R.id.webview);
 
         // CORREÇÃO: O nome correto da classe é WebViewAssetLoader
@@ -46,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         // Habilite o JavaScript para que seus arquivos .js funcionem
         webViewSettings.setJavaScriptEnabled(true);
         
-        // Instancia a classe interna e dá o nome de "AndroidBridge" para o JS
         webView.addJavascriptInterface(new WebAppInterface(), "AndroidBridge");
 
         // Configurações de segurança recomendadas ao usar AssetLoader
@@ -56,24 +56,13 @@ public class LoginActivity extends AppCompatActivity {
         webViewSettings.setAllowContentAccess(false);
 
         // Verifique se o arquivo está em: src/main/assets/www/index.html
-        webView.loadUrl("https://appassets.androidplatform.net/assets/auth/login.html");
+        webView.loadUrl("https://appassets.androidplatform.net/assets/auth/register.html");
     }
-    
-    // CLASSE INTERNA
+
     public class WebAppInterface {
         @JavascriptInterface
-        public void abrirActivity() {
-            // Como é interna, você pode usar MainActivity.this diretamente
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-        }
-        
-        @JavascriptInterface
-        public void resetPassword() {
-            Intent intent = new Intent(LoginActivity.this, ResetPassword.class);
-            startActivity(intent);
+        public void login() {
+            finish();
         }
     }
-
-
 }
