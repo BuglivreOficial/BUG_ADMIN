@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         webViewSettings.setAllowContentAccess(false);
 
         // Verifique se o arquivo está em: src/main/assets/www/index.html
-        webView.loadUrl("https://appassets.androidplatform.net/assets/auth/register.html");
+        webView.loadUrl("https://appassets.androidplatform.net/assets/app/auth/register/register.html");
     }
 
     public class WebAppInterface {

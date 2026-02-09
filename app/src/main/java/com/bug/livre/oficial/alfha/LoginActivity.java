@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         webViewSettings.setAllowContentAccess(false);
 
         // Verifique se o arquivo está em: src/main/assets/www/index.html
-        webView.loadUrl("https://appassets.androidplatform.net/assets/auth/login.html");
+        webView.loadUrl("https://appassets.androidplatform.net/assets/app/auth/login/login.html");
     }
     
     // CLASSE INTERNA

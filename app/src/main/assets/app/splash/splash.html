@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Livre Oficial - Splash</title>
+    <link rel="stylesheet" href="splash-style.css">
+</head>
+<body>
+    <div class="splash-container">
+        <div class="splash-content">
+            <!-- Ícone do App -->
+            <div class="app-icon neu-icon">
+                <div class="icon-inner">
+                    <!-- Ícone de mangá com livro aberto e sparkles -->
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Livro aberto (mangá) -->
+                        <path d="M25 30 C25 25, 28 22, 33 22 L55 22 L55 85 L33 85 C28 85, 25 82, 25 77 Z" 
+                              fill="#6c7293" opacity="0.3"/>
+                        <path d="M95 30 C95 25, 92 22, 87 22 L65 22 L65 85 L87 85 C92 85, 95 82, 95 77 Z" 
+                              fill="#6c7293" opacity="0.3"/>
+                        
+                        <!-- Páginas do livro -->
+                        <line x1="55" y1="22" x2="55" y2="85" stroke="#6c7293" stroke-width="2"/>
+                        <line x1="65" y1="22" x2="65" y2="85" stroke="#6c7293" stroke-width="2"/>
+                        
+                        <!-- Linhas de texto estilizadas (mangá) -->
+                        <line x1="35" y1="35" x2="50" y2="35" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="35" y1="42" x2="48" y2="42" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="35" y1="49" x2="50" y2="49" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        
+                        <line x1="70" y1="35" x2="85" y2="35" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="72" y1="42" x2="85" y2="42" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="70" y1="49" x2="85" y2="49" stroke="#6c7293" stroke-width="1.5" stroke-linecap="round"/>
+                        
+                        <!-- Balão de diálogo de mangá -->
+                        <ellipse cx="42" cy="65" rx="12" ry="8" fill="white" stroke="#6c7293" stroke-width="1.5"/>
+                        <path d="M42 73 L40 78 L44 74" fill="white" stroke="#6c7293" stroke-width="1.5"/>
+                        
+                        <!-- Sparkles/estrelas (bug-free) -->
+                        <path d="M20 15 L21 18 L24 19 L21 20 L20 23 L19 20 L16 19 L19 18 Z" 
+                              fill="#00c896" class="sparkle sparkle-1"/>
+                        <path d="M100 15 L101 18 L104 19 L101 20 L100 23 L99 20 L96 19 L99 18 Z" 
+                              fill="#00c896" class="sparkle sparkle-2"/>
+                        <path d="M30 90 L31 93 L34 94 L31 95 L30 98 L29 95 L26 94 L29 93 Z" 
+                              fill="#00c896" class="sparkle sparkle-3"/>
+                        <path d="M90 90 L91 93 L94 94 L91 95 L90 98 L89 95 L86 94 L89 93 Z" 
+                              fill="#00c896" class="sparkle sparkle-4"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Nome do App -->
+            <div class="app-name">
+                <h1>Bug Livre</h1>
+                <h2>Oficial</h2>
+            </div>
+
+            <!-- Tagline -->
+            <p class="tagline">Seus mangás, sem bugs</p>
+
+            <!-- Loading Animation -->
+            <div class="loading-container">
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p class="loading-text">Carregando...</p>
+            </div>
+        </div>
+
+        <!-- Versão -->
+        <div class="version">v1.0.0</div>
+    </div>
+
+    <script>
+        // Simulação de carregamento
+        window.addEventListener('load', function() {
+            const progressBar = document.querySelector('.loading-progress');
+            const loadingText = document.querySelector('.loading-text');
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    setTimeout(() => {
+                        loadingText.textContent = 'Pronto!';
+                        
+                        // Transição para a próxima tela (login)
+                        setTimeout(() => {
+                            document.querySelector('.splash-container').classList.add('fade-out');
+                            
+                            // Redirecionar após a animação
+                            setTimeout(() => {
+                                // Se estiver em Android WebView, chamar o método nativo
+                                if (typeof AndroidBridge !== 'undefined') {
+                                    AndroidBridge.onSplashComplete();
+                                } else {
+                                    // Caso contrário, redirecionar para login.html
+                                    window.location.href = 'login.html';
+                                }
+                            }, 500);
+                        }, 500);
+                    }, 200);
+                }
+                progressBar.style.width = progress + '%';
+            }, 200);
+        });
+    </script>
+</body>
+</html>

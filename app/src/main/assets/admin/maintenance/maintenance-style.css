@@ -1,0 +1,911 @@
+/* Neumorphism Maintenance Manager - Complete Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #e0e5ec;
+    min-height: 100vh;
+    padding: 40px 20px;
+    line-height: 1.6;
+    color: #3d4468;
+}
+
+.maintenance-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header .neu-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    background: #e0e5ec;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        10px 10px 25px #bec3cf,
+        -10px -10px 25px #ffffff;
+}
+
+.page-header .neu-icon svg {
+    width: 50px;
+    height: 50px;
+    color: #6c7293;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #3d4468;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.page-header p {
+    color: #9499b7;
+    font-size: 16px;
+}
+
+/* Neumorphic Card */
+.neu-card {
+    background: #e0e5ec;
+    border-radius: 25px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 
+        15px 15px 40px #bec3cf,
+        -15px -15px 40px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(90deg, #bec3cf 0%, transparent 100%) bottom / 100% 2px no-repeat;
+}
+
+.card-header h2 {
+    color: #3d4468;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge-count {
+    background: #e0e5ec;
+    min-width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c7293;
+    padding: 0 12px;
+    box-shadow: 
+        5px 5px 12px #bec3cf,
+        -5px -5px 12px #ffffff;
+}
+
+/* Icon Button */
+.neu-icon-btn {
+    width: 40px;
+    height: 40px;
+    background: #e0e5ec;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c7293;
+    box-shadow: 
+        5px 5px 12px #bec3cf,
+        -5px -5px 12px #ffffff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.neu-icon-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+.neu-icon-btn .icon-minus {
+    display: none;
+    position: absolute;
+}
+
+.neu-icon-btn.active .icon-plus {
+    display: none;
+}
+
+.neu-icon-btn.active .icon-minus {
+    display: block;
+}
+
+.neu-icon-btn:hover {
+    color: #3d4468;
+    box-shadow: 
+        7px 7px 15px #bec3cf,
+        -7px -7px 15px #ffffff;
+}
+
+.neu-icon-btn:active {
+    box-shadow: 
+        inset 3px 3px 8px #bec3cf,
+        inset -3px -3px 8px #ffffff;
+}
+
+/* Form Styles */
+.maintenance-form {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.maintenance-form.show {
+    max-height: 1000px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #6c7293;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+/* Neumorphic Input */
+.neu-input {
+    position: relative;
+    background: #e0e5ec;
+    border-radius: 15px;
+    box-shadow: 
+        inset 6px 6px 12px #bec3cf,
+        inset -6px -6px 12px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.neu-input input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px 20px;
+    padding-left: 50px;
+    color: #3d4468;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+}
+
+.neu-input input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: opacity(0.5);
+}
+
+.neu-input .input-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #9499b7;
+}
+
+.neu-input .input-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.neu-input:focus-within {
+    box-shadow: 
+        inset 4px 4px 8px #bec3cf,
+        inset -4px -4px 8px #ffffff;
+}
+
+.neu-input:focus-within .input-icon {
+    color: #6c7293;
+}
+
+/* Neumorphic Select */
+.neu-select {
+    position: relative;
+    background: #e0e5ec;
+    border-radius: 15px;
+    box-shadow: 
+        inset 6px 6px 12px #bec3cf,
+        inset -6px -6px 12px #ffffff;
+}
+
+.neu-select select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px 45px 16px 20px;
+    color: #3d4468;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+.neu-select select option {
+    background: #e0e5ec;
+    color: #3d4468;
+    padding: 10px;
+}
+
+.neu-select .select-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #9499b7;
+    pointer-events: none;
+}
+
+.neu-select .select-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Neumorphic Textarea */
+.neu-textarea {
+    background: #e0e5ec;
+    border-radius: 15px;
+    box-shadow: 
+        inset 6px 6px 12px #bec3cf,
+        inset -6px -6px 12px #ffffff;
+}
+
+.neu-textarea textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px 20px;
+    color: #3d4468;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.neu-textarea textarea::placeholder {
+    color: #9499b7;
+}
+
+/* Toggle Switch */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.neu-toggle-switch {
+    width: 60px;
+    height: 30px;
+    background: #e0e5ec;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 
+        inset 4px 4px 8px #bec3cf,
+        inset -4px -4px 8px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider {
+    width: 22px;
+    height: 22px;
+    background: #e0e5ec;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    box-shadow: 
+        3px 3px 8px #bec3cf,
+        -3px -3px 8px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.toggle-wrapper input[type="checkbox"]:checked + .toggle-label .toggle-slider {
+    left: 34px;
+    box-shadow: 
+        -3px 3px 8px #bec3cf,
+        3px -3px 8px #ffffff;
+}
+
+.toggle-wrapper input[type="checkbox"]:checked + .toggle-label .neu-toggle-switch {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 
+        inset 2px 2px 5px rgba(0,0,0,0.2),
+        inset -2px -2px 5px rgba(255,255,255,0.1);
+}
+
+.toggle-text {
+    color: #6c7293;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Buttons */
+.neu-button {
+    background: #e0e5ec;
+    border: none;
+    border-radius: 15px;
+    padding: 14px 28px;
+    color: #3d4468;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 
+        8px 8px 20px #bec3cf,
+        -8px -8px 20px #ffffff;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.neu-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        10px 10px 25px #bec3cf,
+        -10px -10px 25px #ffffff;
+}
+
+.neu-button:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 4px 4px 10px #bec3cf,
+        inset -4px -4px 10px #ffffff;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    box-shadow: 
+        8px 8px 20px #bec3cf,
+        -8px -8px 20px #ffffff,
+        inset 0 0 0 rgba(255,255,255,0.1);
+}
+
+.btn-primary:hover {
+    box-shadow: 
+        10px 10px 25px #bec3cf,
+        -10px -10px 25px #ffffff,
+        inset 0 0 0 rgba(255,255,255,0.1);
+}
+
+.btn-primary:active {
+    box-shadow: 
+        inset 4px 4px 10px rgba(0,0,0,0.2),
+        inset -4px -4px 10px rgba(255,255,255,0.1);
+}
+
+.btn-secondary {
+    color: #9499b7;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neu-spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.neu-button.loading .btn-text {
+    opacity: 0;
+}
+
+.neu-button.loading .btn-loader {
+    opacity: 1;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+/* Maintenance List */
+.maintenance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.maintenance-item {
+    background: #e0e5ec;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 
+        8px 8px 18px #bec3cf,
+        -8px -8px 18px #ffffff;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.maintenance-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        10px 10px 22px #bec3cf,
+        -10px -10px 22px #ffffff;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-module {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e0e5ec;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6c7293;
+    box-shadow: 
+        4px 4px 10px #bec3cf,
+        -4px -4px 10px #ffffff;
+    margin-bottom: 10px;
+}
+
+.module-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.item-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.date-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #9499b7;
+}
+
+.date-row svg {
+    width: 14px;
+    height: 14px;
+    color: #9499b7;
+}
+
+.date-row strong {
+    color: #6c7293;
+    font-weight: 600;
+}
+
+.item-message {
+    background: #e0e5ec;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: #6c7293;
+    box-shadow: 
+        inset 3px 3px 8px #bec3cf,
+        inset -3px -3px 8px #ffffff;
+    line-height: 1.5;
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-btn {
+    flex: 1;
+    background: #e0e5ec;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    color: #6c7293;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 
+        5px 5px 12px #bec3cf,
+        -5px -5px 12px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.action-btn:hover {
+    color: #3d4468;
+    transform: translateY(-1px);
+    box-shadow: 
+        6px 6px 14px #bec3cf,
+        -6px -6px 14px #ffffff;
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 3px 3px 8px #bec3cf,
+        inset -3px -3px 8px #ffffff;
+}
+
+.action-btn.btn-delete {
+    color: #ff3b5c;
+}
+
+.action-btn.btn-delete:hover {
+    color: #ff1744;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.active {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(17, 153, 142, 0.3);
+}
+
+.status-badge.scheduled {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.status-badge.past {
+    background: #e0e5ec;
+    color: #9499b7;
+    box-shadow: 
+        3px 3px 8px #bec3cf,
+        -3px -3px 8px #ffffff;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #9499b7;
+}
+
+.empty-state svg {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 15px;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #e0e5ec;
+    padding: 16px 24px;
+    border-radius: 15px;
+    box-shadow: 
+        10px 10px 25px #bec3cf,
+        -10px -10px 25px #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    min-width: 300px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.toast-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.toast-icon .icon-success {
+    color: #00c896;
+}
+
+.toast-icon .icon-error {
+    color: #ff3b5c;
+    display: none;
+}
+
+.toast.error .icon-success {
+    display: none;
+}
+
+.toast.error .icon-error {
+    display: block;
+}
+
+.toast-message {
+    color: #3d4468;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(224, 229, 236, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(90deg, #bec3cf 0%, transparent 100%) bottom / 100% 2px no-repeat;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    color: #3d4468;
+}
+
+.modal-close {
+    width: 35px;
+    height: 35px;
+    background: #e0e5ec;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9499b7;
+    box-shadow: 
+        4px 4px 10px #bec3cf,
+        -4px -4px 10px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ff3b5c;
+    box-shadow: 
+        5px 5px 12px #bec3cf,
+        -5px -5px 12px #ffffff;
+}
+
+.modal-close svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .neu-card {
+        padding: 25px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .item-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .toast {
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+    }
+
+    .modal-content {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header .neu-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .page-header .neu-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.25rem;
+    }
+}

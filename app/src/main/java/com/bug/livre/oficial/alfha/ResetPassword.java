@@ -1,6 +1,5 @@
 package com.bug.livre.oficial.alfha;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
@@ -45,6 +44,8 @@ public class ResetPassword extends AppCompatActivity {
         
         // Habilite o JavaScript para que seus arquivos .js funcionem
         webViewSettings.setJavaScriptEnabled(true);
+        
+        webView.addJavascriptInterface(new WebAppInterface(), "AndroidBridge");
 
         // Configurações de segurança recomendadas ao usar AssetLoader
         webViewSettings.setAllowFileAccessFromFileURLs(false);
@@ -52,6 +53,12 @@ public class ResetPassword extends AppCompatActivity {
         webViewSettings.setAllowFileAccess(false);
         webViewSettings.setAllowContentAccess(false);
         
-        webView.loadUrl("https://appassets.androidplatform.net/assets/auth/reset-password.html");
+        webView.loadUrl("https://appassets.androidplatform.net/assets/app/auth/reset-password/reset-password.html");
+    }
+    public class WebAppInterface {
+        @JavascriptInterface
+        public void login() {
+            finish();
+        }
     }
 }

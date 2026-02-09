@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Manutenção</title>
+    <link rel="stylesheet" href="maintenance-style.css">
+</head>
+<body>
+    <div class="maintenance-container">
+        <!-- Header -->
+        <div class="page-header">
+            <div class="neu-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+            </div>
+            <h1>Gerenciamento de Manutenção</h1>
+            <p>Configure períodos de manutenção do sistema</p>
+        </div>
+
+        <!-- Add New Maintenance Card -->
+        <div class="neu-card">
+            <div class="card-header">
+                <h2>Nova Manutenção</h2>
+                <button type="button" class="neu-icon-btn" id="toggleFormBtn">
+                    <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    <svg class="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form class="maintenance-form" id="maintenanceForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="moduleName">Módulo</label>
+                        <div class="neu-select">
+                            <select id="moduleName" name="moduleName" required>
+                                <option value="">Selecione um módulo</option>
+                                <option value="all">Todos (Sistema Completo)</option>
+                                <option value="auth">Autenticação</option>
+                                <option value="payments">Pagamentos</option>
+                                <option value="search">Busca</option>
+                                <option value="api">API</option>
+                                <option value="reports">Relatórios</option>
+                            </select>
+                            <div class="select-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="isActive">Status</label>
+                        <div class="toggle-wrapper">
+                            <input type="checkbox" id="isActive" name="isActive">
+                            <label for="isActive" class="toggle-label">
+                                <div class="neu-toggle-switch">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                                <span class="toggle-text">Ativar Agora</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startAt">Início</label>
+                        <div class="neu-input">
+                            <input type="datetime-local" id="startAt" name="startAt" required>
+                            <div class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endAt">Término</label>
+                        <div class="neu-input">
+                            <input type="datetime-local" id="endAt" name="endAt" required>
+                            <div class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <div class="neu-textarea">
+                        <textarea id="message" name="message" rows="3" placeholder="Digite a mensagem que será exibida aos usuários..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="neu-button btn-secondary" id="cancelBtn">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="neu-button btn-primary">
+                        <span class="btn-text">Salvar Manutenção</span>
+                        <div class="btn-loader">
+                            <div class="neu-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Active Maintenance List -->
+        <div class="neu-card">
+            <div class="card-header">
+                <h2>Manutenções Ativas</h2>
+                <div class="badge-count" id="activeCount">0</div>
+            </div>
+            <div class="maintenance-list" id="activeList">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <p>Nenhuma manutenção ativa</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scheduled Maintenance List -->
+        <div class="neu-card">
+            <div class="card-header">
+                <h2>Manutenções Agendadas</h2>
+                <div class="badge-count" id="scheduledCount">0</div>
+            </div>
+            <div class="maintenance-list" id="scheduledList">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <p>Nenhuma manutenção agendada</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Maintenance List -->
+        <div class="neu-card">
+            <div class="card-header">
+                <h2>Histórico</h2>
+                <div class="badge-count" id="pastCount">0</div>
+            </div>
+            <div class="maintenance-list" id="pastList">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <p>Nenhuma manutenção anterior</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <svg class="icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <svg class="icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+        </div>
+        <span class="toast-message"></span>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content neu-card">
+            <div class="modal-header">
+                <h2>Editar Manutenção</h2>
+                <button type="button" class="modal-close" id="closeModal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editId" name="id">
+                
+                <div class="form-group">
+                    <label for="editModuleName">Módulo</label>
+                    <div class="neu-select">
+                        <select id="editModuleName" name="moduleName" required>
+                            <option value="all">Todos (Sistema Completo)</option>
+                            <option value="auth">Autenticação</option>
+                            <option value="payments">Pagamentos</option>
+                            <option value="search">Busca</option>
+                            <option value="api">API</option>
+                            <option value="reports">Relatórios</option>
+                        </select>
+                        <div class="select-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editIsActive">Status</label>
+                    <div class="toggle-wrapper">
+                        <input type="checkbox" id="editIsActive" name="isActive">
+                        <label for="editIsActive" class="toggle-label">
+                            <div class="neu-toggle-switch">
+                                <div class="toggle-slider"></div>
+                            </div>
+                            <span class="toggle-text">Ativar Agora</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editStartAt">Início</label>
+                        <div class="neu-input">
+                            <input type="datetime-local" id="editStartAt" name="startAt" required>
+                            <div class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editEndAt">Término</label>
+                        <div class="neu-input">
+                            <input type="datetime-local" id="editEndAt" name="endAt" required>
+                            <div class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editMessage">Mensagem</label>
+                    <div class="neu-textarea">
+                        <textarea id="editMessage" name="message" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="neu-button btn-secondary" id="cancelEdit">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="neu-button btn-primary">
+                        Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="maintenance-script.js"></script>
+</body>
+</html>
